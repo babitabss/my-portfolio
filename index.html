@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Babita Acharya – Portfolio</title>
+    <meta name="description" content="Personal portfolio of Babita Acharya - IT Student / Web Developer." />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Inter", "system-ui", "-apple-system", "Segoe UI", "Roboto", "Arial", "sans-serif"],
+              display: ["Poppins", "Inter", "sans-serif"],
+            },
+            colors: {
+              accent: {
+                DEFAULT: "#EC4899",
+                50: "#FDF2F8",
+                100: "#FCE7F3",
+                200: "#FBCFE8",
+                300: "#F9A8D4",
+                400: "#F472B6",
+                500: "#EC4899",
+                600: "#DB2777",
+                700: "#BE185D",
+                800: "#9D174D",
+                900: "#831843",
+              },
+              primary: {
+                DEFAULT: "#A855F7",
+                50: "#FAF5FF",
+                100: "#F3E8FF",
+                200: "#E9D5FF",
+                300: "#D8B4FE",
+                400: "#C084FC",
+                500: "#A855F7",
+                600: "#9333EA",
+                700: "#7C3AED",
+                800: "#6B21A8",
+                900: "#581C87",
+              },
+              secondary: {
+                DEFAULT: "#F472B6",
+                50: "#FDF2F8",
+                100: "#FCE7F3",
+                200: "#FBCFE8",
+                300: "#F9A8D4",
+                400: "#F472B6",
+                500: "#EC4899",
+                600: "#DB2777",
+                700: "#BE185D",
+                800: "#9D174D",
+                900: "#831843",
+              },
+            },
+            boxShadow: {
+              soft: "0 10px 30px -12px rgba(236,72,153,0.35)",
+              warm: "0 10px 30px -12px rgba(168,85,247,0.25)",
+              pink: "0 10px 30px -12px rgba(244,114,182,0.3)",
+            },
+            backgroundImage: {
+              'grid-dark': "radial-gradient(circle at 1px 1px, rgba(255,255,255,0.06) 1px, transparent 0)",
+            },
+          },
+        },
+      };
+    </script>
+
+    <!-- AOS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="bg-gradient-to-br from-pink-50 via-white to-purple-50 text-gray-800 font-sans antialiased selection:bg-accent-500 selection:text-white">
+    <!-- Decorative background -->
+    <div class="pointer-events-none fixed inset-0 -z-10">
+      <div class="absolute inset-0 opacity-40" style="background-image: radial-gradient(50% 50% at 50% 50%, rgba(236,72,153,0.15) 0%, rgba(168,85,247,0.1) 35%, rgba(0,0,0,0) 60%);"></div>
+      <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(circle at 1px 1px, rgba(236,72,153,0.1) 1px, transparent 0); background-size: 24px 24px;"></div>
+    </div>
+
+    <!-- Navbar -->
+    <header class="sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-white/80 bg-white/90 border-b border-pink-200/50 shadow-sm">
+      <nav class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+        <a href="#home" class="flex items-center gap-3 group">
+          <span class="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-accent-400 to-primary-400 ring-1 ring-accent-300/50 group-hover:scale-105 transition shadow-pink">
+            <!-- Logo dot -->
+            <span class="h-2.5 w-2.5 rounded-full bg-white shadow-sm"></span>
+          </span>
+          <span class="font-display text-lg font-semibold tracking-tight text-gray-800">Babita Acharya</span>
+        </a>
+
+        <button id="mobileToggle" class="md:hidden rounded-md p-2 hover:bg-pink-100 focus:outline-none focus:ring-2 focus:ring-accent-500" aria-label="Toggle navigation">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+
+        <ul id="navLinks" class="hidden md:flex items-center gap-6 text-sm">
+          <li><a class="nav-link" href="#home">Home</a></li>
+          <li><a class="nav-link" href="#about">About</a></li>
+          <li><a class="nav-link" href="#projects">Projects</a></li>
+          <li><a class="nav-link" href="#contact">Contact</a></li>
+          <li>
+            <a href="#contact" class="inline-flex items-center gap-2 rounded-md bg-gradient-to-r from-accent-500 to-primary-500 px-4 py-2 font-medium text-white shadow-pink transition hover:-translate-y-0.5 hover:from-accent-400 hover:to-primary-400">
+              <span>Hire Me</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path d="M10.75 3.75a.75.75 0 00-1.5 0v5.5H3.75a.75.75 0 000 1.5h5.5v5.5a.75.75 0 001.5 0v-5.5h5.5a.75.75 0 000-1.5h-5.5v-5.5z" /></svg>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Mobile menu -->
+      <div id="mobileMenu" class="md:hidden hidden border-t border-pink-200/50 bg-white/95 backdrop-blur">
+        <ul class="mx-auto max-w-7xl px-6 py-4 space-y-3">
+          <li><a class="nav-link block" href="#home">Home</a></li>
+          <li><a class="nav-link block" href="#about">About</a></li>
+          <li><a class="nav-link block" href="#projects">Projects</a></li>
+          <li><a class="nav-link block" href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </header>
+
+    <main id="home">
+      <!-- Hero -->
+      <section class="relative mx-auto flex min-h-[86vh] max-w-7xl flex-col items-center justify-center gap-8 px-6 text-center">
+        <div data-aos="fade-up" data-aos-delay="50" class="inline-flex items-center gap-2 rounded-full border border-pink-200 bg-white/80 px-4 py-2 text-xs text-gray-600 shadow-sm">
+          <span class="inline-block h-2 w-2 animate-pulse rounded-full bg-gradient-to-r from-accent-400 to-primary-400"></span>
+          IT Student • Web Developer
+        </div>
+        <h1 data-aos="fade-up" data-aos-delay="150" class="font-display text-4xl font-bold leading-tight tracking-tight sm:text-6xl text-gray-800">
+          Hi,  I'm Babita Acharya. I design and build for modern web. 
+        </h1>
+        <p data-aos="fade-up" data-aos-delay="250" class="max-w-2xl text-gray-600">
+          A passionate IT student and web developer crafting modern, responsive, and interactive websites. I combine simplicity with innovation to create experiences people love to use.
+        </p>
+        <div data-aos="fade-up" data-aos-delay="350" class="flex flex-wrap items-center justify-center gap-4">
+          <a href="#projects" class="btn-primary">Explore My Work</a>
+          <a href="#contact" class="btn-secondary">Let's Connect</a>
+        </div>
+      </section>
+
+      <!-- About -->
+      <section id="about" class="mx-auto max-w-7xl px-6 py-20 sm:py-28">
+        <div class="grid items-center gap-10 md:grid-cols-2">
+          <div class="flex justify-center" data-aos="fade-right">
+            <div class="relative">
+              <img src="assets/img/mypic.jpeg" alt="Profile" class="h-72 w-72 rounded-2xl object-cover ring-1 ring-white/10 shadow-xl" />
+              <div class="absolute -right-4 -top-4 rounded-xl bg-gradient-to-r from-accent-100 to-primary-100 px-3 py-1 text-xs font-medium text-accent-700 ring-1 ring-accent-200">
+                Available for work
+              </div>
+            </div>
+          </div>
+          <div data-aos="fade-left">
+            <h2 class="font-display text-3xl font-semibold tracking-tight sm:text-4xl text-gray-800">About Me</h2>
+            <p class="mt-4 text-gray-600">
+              I'm an IT student and web developer passionate about building user‑centric products. I enjoy blending design and engineering to create fast, elegant, and accessible web apps.
+            </p>
+            <div class="mt-8 grid gap-4 sm:grid-cols-2">
+              <!-- Skill Card -->
+              <div class="card" data-aos="zoom-in" data-aos-delay="50">
+                <div class="icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-6 w-6 text-accent-500"><path d="M3 4.5A1.5 1.5 0 014.5 3h15A1.5 1.5 0 0121 4.5v15a1.5 1.5 0 01-1.5 1.5h-15A1.5 1.5 0 013 19.5v-15zM5 7v12h14V7H5z"/></svg>
+                </div>
+                <h3 class="card-title">Web Development</h3>
+                <p class="card-desc">Build responsive, high-performance websites with clean, scalable code.</p>
+              </div>
+              <div class="card" data-aos="zoom-in" data-aos-delay="150">
+                <div class="icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-6 w-6 text-primary-500"><path d="M12 2a9.99 9.99 0 00-8.944 5.5h3.22A7.5 7.5 0 1112 19.5V22A10 10 0 1012 2z"/></svg>
+                </div>
+                <h3 class="card-title">AI & Automation</h3>
+                <p class="card-desc">Leverage AI tools to simplify workflows and boost productivity.</p>
+              </div>
+              <div class="card" data-aos="zoom-in" data-aos-delay="250">
+                <div class="icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-6 w-6 text-accent-500"><path d="M3 7.5A1.5 1.5 0 014.5 6h15A1.5 1.5 0 0121 7.5V12a6 6 0 11-12 0V9H5.25A2.25 2.25 0 013 6.75V7.5z"/></svg>
+                </div>
+                <h3 class="card-title">Full Stack</h3>
+                <p class="card-desc">Develop everything from robust REST APIs to seamless, interactive front-ends.</p>
+              </div>
+              <div class="card" data-aos="zoom-in" data-aos-delay="350">
+                <div class="icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-6 w-6 text-primary-500"><path d="M12 3l8 4.5v9L12 21 4 16.5v-9L12 3zM6.5 9.2l5.5 3.1 5.5-3.1"/></svg>
+                </div>
+                <h3 class="card-title">Design Systems</h3>
+                <p class="card-desc">Create consistent, reusable components for beautiful and scalable interfaces.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Projects -->
+      <section id="projects" class="relative mx-auto max-w-7xl px-6 py-20 sm:py-32">
+        <!-- Background Pattern -->
+        <div class="absolute inset-0 -z-10">
+          <div class="absolute inset-0 bg-gradient-to-br from-accent-50/50 via-white to-primary-50/50"></div>
+          <div class="absolute inset-0 opacity-30" style="background-image: radial-gradient(circle at 2px 2px, rgba(236,72,153,0.08) 1px, transparent 0); background-size: 40px 40px;"></div>
+        </div>
+
+        <!-- Section Header -->
+        <div class="text-center mb-20" data-aos="fade-up">
+          <div class="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-accent-100 to-primary-100 rounded-full text-sm font-medium text-accent-700 mb-6">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+            </svg>
+            My Work Portfolio
+          </div>
+          
+          <h2 class="font-display text-5xl sm:text-6xl font-bold tracking-tight text-gray-900 mb-6">
+            Featured 
+            <span class="relative">
+              <span class="bg-gradient-to-r from-accent-500 via-primary-500 to-accent-600 bg-clip-text text-transparent">Projects</span>
+              <svg class="absolute -bottom-2 left-0 w-full h-3 text-accent-200" viewBox="0 0 200 12" fill="currentColor">
+                <path d="M2,10 Q50,2 100,6 T198,4" stroke="currentColor" stroke-width="3" fill="none" opacity="0.7"/>
+              </svg>
+            </span>
+          </h2>
+          
+          <p class="text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto">
+            Explore my carefully crafted projects that blend creativity, innovation, and technical expertise. 
+            Each project tells a unique story of problem-solving and design excellence.
+          </p>
+        </div>
+
+        <!-- Featured Project Spotlight -->
+        <div class="max-w-5xl mx-auto mb-24" data-aos="fade-up" data-aos-delay="100">
+          <div class="group relative">
+            <!-- Main Featured Card -->
+            <div class="relative overflow-hidden rounded-2xl bg-white shadow-xl shadow-gray-900/15 border border-gray-200/50 transition-all duration-700 hover:shadow-2xl hover:shadow-accent-500/15">
+              <!-- Background Gradient -->
+              <div class="absolute inset-0 bg-gradient-to-br from-accent-500/3 via-transparent to-primary-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+              
+              <div class="grid lg:grid-cols-3 gap-0">
+                <!-- Project Image Side -->
+                <div class="lg:col-span-1 relative overflow-hidden">
+                  <div class="absolute inset-0 bg-gradient-to-br from-accent-500/15 to-primary-500/15 z-10"></div>
+                  <img 
+                    src="assets/img/e-learnin.jpg" 
+                    alt="Pathsala E-Learning Platform" 
+                    class="w-full h-64 lg:h-full object-cover transition-transform duration-700 group-hover:scale-105" 
+                  />
+                  
+                  <!-- Category Badge -->
+                  <div class="absolute top-4 left-4 z-20">
+                    <div class="flex items-center gap-2 px-3 py-1.5 bg-white/95 backdrop-blur-sm rounded-full shadow-lg">
+                      <div class="w-2 h-2 bg-accent-500 rounded-full"></div>
+                      <span class="text-xs font-semibold text-gray-800">Featured</span>
+                    </div>
+                  </div>
+                  
+                  <!-- Tech Stack Floating Pills -->
+                  <div class="absolute bottom-4 left-4 z-20">
+                    <div class="flex flex-wrap gap-1">
+                      <span class="px-2 py-1 bg-white/95 backdrop-blur-sm rounded-md text-xs font-medium text-gray-800 shadow-md">Node.js</span>
+                      <span class="px-2 py-1 bg-white/95 backdrop-blur-sm rounded-md text-xs font-medium text-gray-800 shadow-md">MySQL</span>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Project Content Side -->
+                <div class="lg:col-span-2 p-6 lg:p-8 flex flex-col justify-center">
+                  <div class="space-y-6">
+                    <!-- Project Category -->
+                    <div class="flex items-center gap-3">
+                      <div class="w-10 h-10 bg-gradient-to-br from-accent-500 to-primary-500 rounded-lg flex items-center justify-center shadow-md">
+                        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                        </svg>
+                      </div>
+                      <div>
+                        <p class="text-sm font-semibold text-accent-600 uppercase tracking-wider">Featured Project</p>
+                        <p class="text-xs text-gray-500">Full Stack Development</p>
+                      </div>
+                    </div>
+                    
+                    <!-- Project Title & Description -->
+                    <div>
+                      <h3 class="font-display text-2xl lg:text-3xl font-bold text-gray-900 tracking-tight mb-3 group-hover:text-accent-600 transition-colors">
+                        Pathsala E-Learning Platform
+                      </h3>
+                      <p class="text-gray-600 leading-relaxed">
+                        A comprehensive online learning platform featuring interactive video lessons, 
+                        real-time quizzes, progress tracking, and secure user authentication. 
+                        Built with modern web technologies for optimal performance.
+                      </p>
+                    </div>
+                    
+                    <!-- Key Features -->
+                    <div class="space-y-3">
+                      <h4 class="font-semibold text-gray-800 text-sm uppercase tracking-wide">Key Features</h4>
+                      <div class="grid grid-cols-2 gap-2 text-sm">
+                        <div class="flex items-center gap-2 text-gray-600">
+                          <div class="w-1.5 h-1.5 bg-accent-500 rounded-full"></div>
+                          Video Streaming
+                        </div>
+                        <div class="flex items-center gap-2 text-gray-600">
+                          <div class="w-1.5 h-1.5 bg-primary-500 rounded-full"></div>
+                          Progress Tracking
+                        </div>
+                        <div class="flex items-center gap-2 text-gray-600">
+                          <div class="w-1.5 h-1.5 bg-accent-500 rounded-full"></div>
+                          User Authentication
+                        </div>
+                        <div class="flex items-center gap-2 text-gray-600">
+                          <div class="w-1.5 h-1.5 bg-primary-500 rounded-full"></div>
+                          Interactive Quizzes
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <!-- Tech Stack Tags -->
+                    <div class="flex flex-wrap gap-2">
+                      <span class="px-3 py-1 bg-accent-50 text-accent-700 text-xs font-medium rounded-lg border border-accent-200">Node.js</span>
+                      <span class="px-3 py-1 bg-primary-50 text-primary-700 text-xs font-medium rounded-lg border border-primary-200">MySQL</span>
+                      <span class="px-3 py-1 bg-gray-50 text-gray-700 text-xs font-medium rounded-lg border border-gray-200">JavaScript</span>
+                      <span class="px-3 py-1 bg-green-50 text-green-700 text-xs font-medium rounded-lg border border-green-200">REST API</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Other Projects Gallery -->
+        <div class="space-y-8">
+          <!-- Section Title -->
+          <div class="text-center" data-aos="fade-up" data-aos-delay="200">
+            <h3 class="font-display text-3xl font-bold text-gray-900 mb-4">More Projects</h3>
+            <p class="text-gray-600 max-w-2xl mx-auto">Discover additional projects that showcase different aspects of my development skills and creative problem-solving.</p>
+          </div>
+          
+          <!-- Projects Grid -->
+          <div class="grid md:grid-cols-2 gap-8" data-aos="fade-up" data-aos-delay="300">
+            
+            <!-- Project Card 1 -->
+            <article class="group relative bg-white rounded-2xl shadow-xl shadow-gray-900/10 border border-gray-200/50 overflow-hidden transition-all duration-500 hover:shadow-2xl hover:shadow-accent-500/20 hover:-translate-y-2">
+              <!-- Image Container -->
+              <div class="relative overflow-hidden">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <img 
+                  src="assets/img/led.webp" 
+                  alt="Smart LED Controller" 
+                  class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110" 
+                />
+                
+                <!-- Overlay Content -->
+                <div class="absolute inset-0 z-20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
+                  <a href="#" class="inline-flex items-center gap-2 px-6 py-3 bg-white/95 backdrop-blur-sm text-gray-900 font-semibold rounded-xl shadow-lg transition-transform hover:scale-105">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                    </svg>
+                    Explore Project
+                  </a>
+                </div>
+                
+                <!-- Category Badge -->
+                <div class="absolute top-4 left-4 z-30">
+                  <span class="inline-flex items-center px-3 py-1 bg-primary-500 text-white text-xs font-semibold rounded-full">
+                    IoT & Hardware
+                  </span>
+                </div>
+              </div>
+              
+              <!-- Content -->
+              <div class="p-8">
+                <div class="space-y-4">
+                  <!-- Title & Subtitle -->
+                  <div>
+                    <h3 class="font-display text-2xl font-bold text-gray-900 group-hover:text-accent-600 transition-colors">
+                      Smart LED Controller
+                    </h3>
+                    <p class="text-sm text-gray-500 font-medium">ESP8266 & Tasmota Integration</p>
+                  </div>
+                  
+                  <!-- Description -->
+                  <p class="text-gray-600 leading-relaxed">
+                    Advanced LED lighting system with ESP8266 microcontroller and Tasmota firmware. 
+                    Features custom lighting modes, scheduling, and seamless smart home integration.
+                  </p>
+                  
+                  <!-- Technologies -->
+                  <div class="flex flex-wrap gap-2">
+                    <span class="px-3 py-1 bg-accent-50 text-accent-700 text-xs font-medium rounded-lg border border-accent-200">ESP8266</span>
+                    <span class="px-3 py-1 bg-primary-50 text-primary-700 text-xs font-medium rounded-lg border border-primary-200">Tasmota</span>
+                    <span class="px-3 py-1 bg-gray-50 text-gray-700 text-xs font-medium rounded-lg border border-gray-200">IoT</span>
+                  </div>
+                  
+                  <!-- Action Footer -->
+                  <div class="flex items-center justify-between pt-4 border-t border-gray-100">
+                    <div class="flex items-center gap-3">
+                      <div class="w-8 h-8 bg-gradient-to-br from-accent-500 to-primary-500 rounded-lg flex items-center justify-center">
+                        <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                      </div>
+                      <span class="text-sm font-medium text-gray-700">Hardware Project</span>
+                    </div>
+                    
+                    <a href="#" class="group/link inline-flex items-center gap-1 text-accent-600 font-medium text-sm hover:text-accent-700 transition-colors">
+                      <span>Learn More</span>
+                      <svg class="w-4 h-4 transition-transform group-hover/link:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Project Card 2 -->
+            <article class="group relative bg-white rounded-2xl shadow-xl shadow-gray-900/10 border border-gray-200/50 overflow-hidden transition-all duration-500 hover:shadow-2xl hover:shadow-primary-500/20 hover:-translate-y-2">
+              <!-- Image Container -->
+              <div class="relative overflow-hidden">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <img 
+                  src="assets/img/ss.jpeg" 
+                  alt="Portfolio Website" 
+                  class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110" 
+                />
+                
+                <!-- Overlay Content -->
+                <div class="absolute inset-0 z-20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
+                  <a href="#" class="inline-flex items-center gap-2 px-6 py-3 bg-white/95 backdrop-blur-sm text-gray-900 font-semibold rounded-xl shadow-lg transition-transform hover:scale-105">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                    </svg>
+                    View Website
+                  </a>
+                </div>
+                
+                <!-- Category Badge -->
+                <div class="absolute top-4 left-4 z-30">
+                  <span class="inline-flex items-center px-3 py-1 bg-accent-500 text-white text-xs font-semibold rounded-full">
+                    Web Design
+                  </span>
+                </div>
+              </div>
+              
+              <!-- Content -->
+              <div class="p-8">
+                <div class="space-y-4">
+                  <!-- Title & Subtitle -->
+                  <div>
+                    <h3 class="font-display text-2xl font-bold text-gray-900 group-hover:text-primary-600 transition-colors">
+                      Portfolio Website
+                    </h3>
+                    <p class="text-sm text-gray-500 font-medium">Modern Responsive Design</p>
+                  </div>
+                  
+                  <!-- Description -->
+                  <p class="text-gray-600 leading-relaxed">
+                    Sleek and modern personal portfolio featuring smooth animations, responsive design, 
+                    and optimized performance. Built with cutting-edge web technologies.
+                  </p>
+                  
+                  <!-- Technologies -->
+                  <div class="flex flex-wrap gap-2">
+                    <span class="px-3 py-1 bg-orange-50 text-orange-700 text-xs font-medium rounded-lg border border-orange-200">HTML5</span>
+                    <span class="px-3 py-1 bg-blue-50 text-blue-700 text-xs font-medium rounded-lg border border-blue-200">Tailwind</span>
+                    <span class="px-3 py-1 bg-green-50 text-green-700 text-xs font-medium rounded-lg border border-green-200">Django</span>
+                    <span class="px-3 py-1 bg-yellow-50 text-yellow-700 text-xs font-medium rounded-lg border border-yellow-200">JavaScript</span>
+                  </div>
+                  
+                  <!-- Action Footer -->
+                  <div class="flex items-center justify-between pt-4 border-t border-gray-100">
+                    <div class="flex items-center gap-3">
+                      <div class="w-8 h-8 bg-gradient-to-br from-primary-500 to-accent-500 rounded-lg flex items-center justify-center">
+                        <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9v-9m0-9v9"></path>
+                        </svg>
+                      </div>
+                      <span class="text-sm font-medium text-gray-700">Web Development</span>
+                    </div>
+                    
+                    <a href="#" class="group/link inline-flex items-center gap-1 text-primary-600 font-medium text-sm hover:text-primary-700 transition-colors">
+                      <span>Explore</span>
+                      <svg class="w-4 h-4 transition-transform group-hover/link:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <!-- Call to Action -->
+        <div class="text-center mt-20" data-aos="fade-up" data-aos-delay="400">
+          <div class="inline-flex flex-col items-center p-8 bg-gradient-to-br from-accent-50 to-primary-50 rounded-3xl border border-accent-100 shadow-xl">
+            <div class="w-16 h-16 bg-gradient-to-br from-accent-500 to-primary-500 rounded-2xl flex items-center justify-center mb-6 shadow-lg">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+              </svg>
+            </div>
+            
+            <h3 class="font-display text-2xl font-bold text-gray-900 mb-3">Like What You See?</h3>
+            <p class="text-gray-600 max-w-md mb-6">I'm always working on new projects and exploring innovative technologies. Let's discuss your next big idea!</p>
+            
+            <div class="flex flex-wrap gap-4">
+              <a href="#contact" class="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-accent-500 to-primary-500 text-white font-semibold rounded-xl shadow-lg shadow-accent-500/30 transition-all duration-300 hover:shadow-xl hover:shadow-accent-500/40 hover:-translate-y-1">
+                <span>Start a Project</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                </svg>
+              </a>
+              
+              <a href="https://github.com/babitabss" class="inline-flex items-center gap-2 px-6 py-3 bg-white border-2 border-gray-200 text-gray-700 font-semibold rounded-xl transition-all duration-300 hover:border-accent-300 hover:bg-gradient-to-r hover:from-pink-50 hover:to-purple-50">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.52 2.87 8.35 6.84 9.7.5.1.68-.22.68-.48 0-.24-.01-.86-.01-1.69-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.1-1.5-1.1-1.5-.9-.64.07-.63.07-.63 1 .07 1.53 1.05 1.53 1.05.89 1.56 2.34 1.11 2.9.85.09-.66.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.09 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.7 0 0 .84-.27 2.75 1.05a9.27 9.27 0 015 0c1.9-1.32 2.74-1.05 2.74-1.05.55 1.4.2 2.44.1 2.7.64.72 1.03 1.63 1.03 2.75 0 3.96-2.34 4.82-4.57 5.08.36.32.68.95.68 1.92 0 1.38-.01 2.49-.01 2.83 0 .26.18.59.69.48A10.04 10.04 0 0022 12.26C22 6.58 17.52 2 12 2z"/>
+                </svg>
+                <span>View All Projects</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section id="contact" class="mx-auto max-w-7xl px-6 py-20 sm:py-28">
+        <div class="mb-10 sm:mb-14" data-aos="fade-up">
+          <h2 class="font-display text-3xl font-semibold tracking-tight sm:text-4xl text-gray-800">Contact Me</h2>
+          <p class="mt-3 text-gray-600">Let's build something great together. I'm open to opportunities.</p>
+        </div>
+
+        <div class="max-w-4xl mx-auto">
+          <div class="grid gap-12 lg:grid-cols-3">
+            <!-- Contact Information -->
+            <div class="lg:col-span-1" data-aos="fade-right">
+              <div class="space-y-8">
+                <div>
+                  <h3 class="text-xl font-semibold text-gray-800 mb-4">Get in Touch</h3>
+                  <p class="text-gray-600 leading-relaxed">
+                    I'm always interested in new opportunities and exciting projects. 
+                    Whether you have a question or just want to say hi, I'll try my best to get back to you!
+                  </p>
+                </div>
+                
+                <div class="space-y-4">
+                  <div class="flex items-center gap-3">
+                    <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-accent-500/10 flex items-center justify-center">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent-400" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
+                        <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
+                      </svg>
+                    </div>
+                    <div>
+                      <p class="text-sm text-gray-500">Email</p>
+                      <p class="text-gray-800">itsssbabita221@gmail.com</p>
+                    </div>
+                  </div>
+                  
+                  <div class="flex items-center gap-3">
+                    <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-primary-500/10 flex items-center justify-center">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary-400" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
+                      </svg>
+                    </div>
+                    <div>
+                      <p class="text-sm text-gray-500">Location</p>
+                      <p class="text-gray-800">Pokhara, Nepal</p>
+                    </div>
+                  </div>
+                  
+                  <div class="flex items-center gap-3">
+                    <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-accent-500/10 flex items-center justify-center">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent-400" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
+                      </svg>
+                    </div>
+                    <div>
+                      <p class="text-sm text-gray-500">Response Time</p>
+                      <p class="text-gray-800">Within 24 hours</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Contact Form -->
+            <div class="lg:col-span-2" data-aos="fade-left">
+              <form id="contactForm" novalidate class="bg-white/90 border border-pink-200 rounded-2xl p-8 shadow-lg">
+                <div class="space-y-6">
+                  <div class="grid gap-6 sm:grid-cols-2">
+                    <div>
+                      <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
+                      <input 
+                        type="text" 
+                        id="name" 
+                        name="name" 
+                        required 
+                        class="w-full px-4 py-3 bg-white border border-pink-200 rounded-lg text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-accent-500/50 focus:border-accent-500/50 transition-colors"
+                        placeholder="Enter your full name"
+                      />
+                      <p class="mt-1 text-xs text-rose-500" id="error-name"></p>
+                    </div>
+                    
+                    <div>
+                      <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
+                      <input 
+                        type="email" 
+                        id="email" 
+                        name="email" 
+                        required 
+                        class="w-full px-4 py-3 bg-white border border-pink-200 rounded-lg text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-accent-500/50 focus:border-accent-500/50 transition-colors"
+                        placeholder="your.email@gmail.com"
+                      />
+                      <p class="mt-1 text-xs text-rose-500" id="error-email"></p>
+                    </div>
+                  </div>
+                  
+                  <div>
+                    <label for="subject" class="block text-sm font-medium text-gray-700 mb-2">Subject</label>
+                    <input 
+                      type="text" 
+                      id="subject" 
+                      name="subject" 
+                      class="w-full px-4 py-3 bg-white border border-pink-200 rounded-lg text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-accent-500/50 focus:border-accent-500/50 transition-colors"
+                      placeholder="What's this about?"
+                    />
+                  </div>
+                  
+                  <div>
+                    <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Message</label>
+                    <textarea 
+                      id="message" 
+                      name="message" 
+                      rows="5" 
+                      required 
+                      class="w-full px-4 py-3 bg-white border border-pink-200 rounded-lg text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-accent-500/50 focus:border-accent-500/50 transition-colors resize-none"
+                      placeholder="Tell me about your project or how I can help you..."
+                    ></textarea>
+                    <p class="mt-1 text-xs text-rose-500" id="error-message"></p>
+                  </div>
+                  
+                  <button 
+                    type="submit" 
+                    class="w-full bg-gradient-to-r from-accent-500 to-primary-500 text-white font-semibold py-3 px-6 rounded-lg hover:from-accent-400 hover:to-primary-400 transition-all duration-200 hover:shadow-lg hover:shadow-accent-500/25 focus:outline-none focus:ring-2 focus:ring-accent-500/50"
+                  >
+                    Send Message
+                  </button>
+                  
+                  <p id="formSuccess" class="hidden text-sm text-emerald-600 bg-emerald-50 border border-emerald-200 rounded-lg p-3"></p>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-200">
+      <div class="mx-auto max-w-7xl px-6 py-16">
+        <!-- Main Footer Content -->
+        <div class="grid gap-12 lg:grid-cols-3">
+          <!-- Brand Section -->
+          <div class="lg:col-span-1">
+            <div class="flex items-center gap-3 mb-6">
+              <span class="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-accent-400 to-primary-400 ring-1 ring-accent-300/50 shadow-pink">
+                <span class="h-3 w-3 rounded-full bg-white shadow-sm"></span>
+              </span>
+              <span class="font-display text-xl font-semibold text-gray-800">Babita Acharya</span>
+            </div>
+            <p class="text-gray-600 mb-6 leading-relaxed">
+              IT Student & Web Developer passionate about creating beautiful, functional digital experiences.
+            </p>
+            <div class="space-y-2 text-sm text-gray-500">
+              <p class="flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                  <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
+                  <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
+                </svg>
+                itsssbabita221@gmail.com
+              </p>
+              <p class="flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
+                </svg>
+                Pokhara, Nepal
+              </p>
+            </div>
+          </div>
+
+          <!-- Quick Links -->
+          <div>
+            <h3 class="text-lg font-semibold text-gray-800 mb-6">Quick Links</h3>
+            <ul class="space-y-4">
+              <li><a class="text-gray-600 hover:text-accent-500 transition-colors" href="#home">Home</a></li>
+              <li><a class="text-gray-600 hover:text-accent-500 transition-colors" href="#about">About</a></li>
+              <li><a class="text-gray-600 hover:text-accent-500 transition-colors" href="#projects">Projects</a></li>
+              <li><a class="text-gray-600 hover:text-accent-500 transition-colors" href="#contact">Contact</a></li>
+            </ul>
+          </div>
+
+          <!-- Social Media -->
+          <div>
+            <h3 class="text-lg font-semibold text-gray-800 mb-6">Connect With Me</h3>
+            <p class="text-gray-600 mb-6 text-sm">Follow me for updates and behind-the-scenes content</p>
+            
+            <div class="flex gap-4">
+              <!-- Facebook -->
+              <a href="https://www.facebook.com/" target="_blank" rel="noreferrer noopener" class="social-link" aria-label="Facebook">
+                <svg viewBox="0 0 24 24" class="h-5 w-5">
+                  <path fill="currentColor" d="M13.4 21.5v-8.7h2.9l.43-3.4h-3.33V7.4c0-.98.27-1.65 1.68-1.65h1.8V2.7c-.31-.04-1.37-.13-2.6-.13-2.57 0-4.33 1.57-4.33 4.45v2.48H7.1v3.4h2.85v8.6h3.45z"/>
+                </svg>
+              </a>
+
+              <!-- Instagram -->
+              <a href="https://www.instagram.com/crystavyn0?igsh=bjFpY3VmbWczbDB3&utm_source=qr" target="_blank" rel="noreferrer noopener" class="social-link" aria-label="Instagram">
+                <svg viewBox="0 0 24 24" class="h-5 w-5">
+                  <path fill="currentColor" d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.06 2 .26 2.47.43a4.9 4.9 0 011.77 1.15 4.9 4.9 0 011.15 1.77c.17.47.37 1.26.43 2.47.06 1.3.07 1.7.07 4.9s0 3.6-.07 4.9c-.06 1.2-.26 2-.43 2.47a4.9 4.9 0 01-1.15 1.77 4.9 4.9 0 01-1.77 1.15c-.47.17-1.26.37-2.47.43-1.3.06-1.7.07-4.9.07s-3.6 0-4.9-.07c-1.2-.06-2-.26-2.47-.43a4.9 4.9 0 01-1.77-1.15 4.9 4.9 0 01-1.15-1.77c-.17-.47-.37-1.26-.43-2.47C2.2 15.6 2.2 15.2 2.2 12s0-3.6.07-4.9c.06-1.2.26-2 .43-2.47a4.9 4.9 0 011.15-1.77A4.9 4.9 0 015.62 2.7c.47-.17 1.26-.37 2.47-.43C9.4 2.2 9.8 2.2 13 2.2zm0 1.8c-3.14 0-3.51 0-4.75.07-1.1.06-1.7.24-2.1.4-.53.2-.9.43-1.3.83-.4.4-.62.77-.83 1.3-.16.4-.33 1-.4 2.1-.07 1.24-.07 1.61-.07 4.75s0 3.51.07 4.75c.06 1.1.24 1.7.4 2.1.2.53.43.9.83 1.3.4.4.77.62 1.3.83.4.16 1 .33 2.1.4 1.24.07 1.61.07 4.75.07s3.51 0 4.75-.07c1.1-.06 1.7-.24 2.1-.4.53-.2.9-.43 1.3-.83.4-.4.62-.77.83-1.3.16-.4.33-1 .4-2.1.07-1.24.07-1.61.07-4.75s0-3.51-.07-4.75c-.06-1.1-.24-1.7-.4-2.1-.2-.53-.43-.9-.83-1.3a3.1 3.1 0 00-1.3-.83c-.4-.16-1-.33-2.1-.4-1.24-.07-1.61-.07-4.75-.07zm0 3.5a6.5 6.5 0 110 13 6.5 6.5 0 010-13zm0 2a4.5 4.5 0 100 9 4.5 4.5 0 000-9zm5-3.3a1.5 1.5 0 110 3 1.5 1.5 0 010-3z"/>
+                </svg>
+              </a>
+
+              <!-- LinkedIn -->
+              <a href="https://www.linkedin.com/in/babita-acharya-01b91a2a9?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank" rel="noreferrer noopener" class="social-link" aria-label="LinkedIn">
+                <svg viewBox="0 0 24 24" class="h-5 w-5">
+                  <path fill="currentColor" d="M6.94 6.5a1.94 1.94 0 11-3.88 0 1.94 1.94 0 013.88 0zM3.5 8.75h3.5v11.75H3.5V8.75zm6.06 0H13v1.61h.05c.48-.9 1.65-1.85 3.39-1.85 3.63 0 4.3 2.39 4.3 5.49v6.5h-3.5v-5.76c0-1.37-.02-3.13-1.91-3.13-1.91 0-2.2 1.49-2.2 3.03v5.86H9.56V8.75z"/>
+                </svg>
+              </a>
+
+              <!-- GitHub -->
+              <a href="https://github.com/babitabss" target="_blank" rel="noreferrer noopener" class="social-link" aria-label="GitHub">
+                <svg viewBox="0 0 24 24" class="h-5 w-5">
+                  <path fill="currentColor" d="M12 2C6.48 2 2 6.58 2 12.26c0 4.52 2.87 8.35 6.84 9.7.5.1.68-.22.68-.48 0-.24-.01-.86-.01-1.69-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.1-1.5-1.1-1.5-.9-.64.07-.63.07-.63 1 .07 1.53 1.05 1.53 1.05.89 1.56 2.34 1.11 2.9.85.09-.66.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.09 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.7 0 0 .84-.27 2.75 1.05a9.27 9.27 0 015 0c1.9-1.32 2.74-1.05 2.74-1.05.55 1.4.2 2.44.1 2.7.64.72 1.03 1.63 1.03 2.75 0 3.96-2.34 4.82-4.57 5.08.36.32.68.95.68 1.92 0 1.38-.01 2.49-.01 2.83 0 .26.18.59.69.48A10.04 10.04 0 0022 12.26C22 6.58 17.52 2 12 2z"/>
+                </svg>
+              </a>
+
+              <!-- TikTok -->
+              <a href="www.tiktok.com/@howyoudoin16" target="_blank" rel="noreferrer noopener" class="social-link" aria-label="TikTok">
+                <svg viewBox="0 0 24 24" class="h-5 w-5">
+                  <path fill="currentColor" d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-.88-.05A6.33 6.33 0 005 20.1a6.34 6.34 0 0010.86-4.43v-7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1-.1z"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom Border -->
+        <div class="mt-12 pt-8 border-t border-gray-200">
+          <div class="flex flex-col items-center justify-between gap-4 sm:flex-row">
+            <p class="text-sm text-gray-500">
+              © <span id="year"></span> Babita Acharya. All rights reserved.
+            </p>
+            <p class="text-xs text-gray-400">
+              Made with ❤️ and lots of coffee
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="script.js"></script>
+  </body>
+  </html>
+
+
